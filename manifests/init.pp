@@ -42,6 +42,7 @@ class horizon(
 
   package { ["$::horizon::params::package_name","$::horizon::params::http_service"]:
     ensure => present,
+    tag => "openstack"
   }
 
   file { '/etc/openstack-dashboard/local_settings.py':
