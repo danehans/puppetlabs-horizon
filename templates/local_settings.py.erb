@@ -78,6 +78,7 @@ QUANTUM_ENABLED = True
 
 # If you have external monitoring links, eg:
 EXTERNAL_MONITORING = <% if horizon_app_links %><%= horizon_app_links %><% else %>[ ]<% end %>
+TOP_LINKS = <% if horizon_top_links %><%= horizon_top_links %><% else %>[ ]<% end %>
 LOGGING = {
         'version': 1,
         # When set to True this will disable all logging except
