@@ -58,4 +58,12 @@ class horizon(
     require   => Package["$::horizon::params::http_service"],
     subscribe => File['/etc/openstack-dashboard/local_settings.py']
   }
+  
+  file { "/etc/apache2/conf.d/openstack-dashboard.conf":
+        source  => 'puppet:///modules/horizon/openstack-dashboard.def',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '755',
+        notify  => Service['httpd'],
+  }
 }
