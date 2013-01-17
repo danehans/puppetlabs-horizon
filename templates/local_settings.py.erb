@@ -78,6 +78,7 @@ QUANTUM_ENABLED = True
 
 # If you have external monitoring links, eg:
 EXTERNAL_MONITORING = <% if horizon_app_links %><%= horizon_app_links %><% else %>[ ]<% end %>
+TOP_LINKS = <% if horizon_top_links %><%= horizon_top_links %><% else %>[ ]<% end %>
 LOGGING = {
         'version': 1,
         # When set to True this will disable all logging except
@@ -107,11 +108,19 @@ LOGGING = {
                 'handlers': ['console'],
                 'propagate': False,
             },
+            'openstack_dashboard': {
+                'handlers': ['console'],
+                'propagate': False,
+            },
             'novaclient': {
                 'handlers': ['console'],
                 'propagate': False,
             },
             'keystoneclient': {
+                'handlers': ['console'],
+                'propagate': False,
+            },
+            'glanceclient': {
                 'handlers': ['console'],
                 'propagate': False,
             },
@@ -121,3 +130,9 @@ LOGGING = {
             }
         }
 }
+
+
+# The Ubuntu package includes pre-compressed JS and compiled CSS to allow
+# offline compression by default.  To enable online compression, install
+# the node-less package and enable the following option.
+COMPRESS_OFFLINE = True
