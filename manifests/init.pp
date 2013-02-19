@@ -48,6 +48,7 @@ class horizon(
   }
 
   file { '/etc/openstack-dashboard/local_settings.py':
+    require => Package["$::horizon::params::package_name","$::horizon::params::http_service"],
     content => template('horizon/local_settings.py.erb'),
     mode    => '0644',
   }
@@ -60,6 +61,7 @@ class horizon(
   }
   
   file { "/etc/apache2/conf.d/openstack-dashboard.conf":
+        require => Package["$::horizon::params::package_name","$::horizon::params::http_service"],
         source  => 'puppet:///modules/horizon/openstack-dashboard.def',
         owner   => 'root',
         group   => 'root',
